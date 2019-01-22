@@ -16,8 +16,10 @@
         {{item.note}}
       </div>
     </button>
+    <button ion-item *ngFor='let ble of bles' (click)="bleTapped($event, ble)">
+      <ion-icon name="bluetooth" item-start></ion-icon>
+      {{ble.area_name}}
+    </button>
   </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+  
 </ion-content>
