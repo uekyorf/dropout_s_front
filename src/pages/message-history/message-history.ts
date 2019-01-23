@@ -14,8 +14,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'message-history.html',
 })
 export class MessageHistoryPage {
-
+  selectedBle: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.selectedBle = navParams.get('ble');
   }
 
   ionViewDidLoad() {
