@@ -15,5 +15,16 @@
   </p>
 
   <button ion-button secondary menuToggle>Toggle Menu</button>
-  <button ion-button clear (click)="getData()">Get</button>
+  <button ion-button type="button" (click)="onStartClicked()" block>Start</button>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label fixed>UUID</ion-label>
+      <ion-textarea type="text" [(ngModel)]="uuid"></ion-textarea>
+    </ion-item>
+
+  </ion-list>
+
+
 </ion-content>

@@ -12,6 +12,7 @@ import { ListinfoPage } from '../pages/listinfo/listinfo';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { IBeacon } from "@ionic-native/ibeacon";
 import { ApiProvider } from '../providers/api/api';
 
 @NgModule({
@@ -37,6 +38,7 @@ import { ApiProvider } from '../providers/api/api';
   providers: [
     StatusBar,
     SplashScreen,
+    IBeacon,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiProvider
   ]
