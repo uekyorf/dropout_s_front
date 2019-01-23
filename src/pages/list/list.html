@@ -9,13 +9,6 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
-    </button>
     <button ion-item *ngFor='let ble of bles' (click)="bleTapped($event, ble)">
       <ion-icon name="bluetooth" item-start></ion-icon>
       {{ble.area_name}}
