@@ -15,7 +15,7 @@ import { Ble } from '../interfaces/Ble'
 export class ApiProvider {
 
   constructor(public http: HttpClient) {
-    
+
   }
   getBleList(): Observable<any> {
     return this.http.get<Ble[]>('/api/ble/get');
@@ -24,4 +24,5 @@ export class ApiProvider {
   getMessage(): Observable<any> {
     return this.http.get('/api/message/get');
   }
+
 }
