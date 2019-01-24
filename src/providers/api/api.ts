@@ -17,14 +17,17 @@ export class ApiProvider {
   url = 'https://kakioku-api-server.herokuapp.com';
   // btoaでbase64エンコードしているので、'user:password'で変換
   basic = btoa('user:password')
-  headers = new HttpHeaders().set('Authorization', `Basic ${this.basic}`);
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Authorization': `Basic ${this.basic}`
+    })
+  }
   constructor(public http: HttpClient) {
     
   }
+  
   getBleList(): Observable<any> {
-    return this.http.get<Ble[]>(`${this.url}/api/ble/get`, {
-      headers : this.headers
-    });
+    return this.http.get<Ble[]>(`${this.url}/api/ble/get`, this.httpOptions);
   }
 
   getMessage(): Observable<any> {
