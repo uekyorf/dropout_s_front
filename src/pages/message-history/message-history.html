@@ -13,16 +13,18 @@
     <ion-title>MessageHistory</ion-title>
   </ion-navbar>
 
+
 </ion-header>
+
 
 
 <ion-content>
   <ion-list>
     <ion-item>
 
-      <h2>My Neighbor Totoro</h2>
-      <p>Hayao Miyazaki • 1988</p>
-      <button ion-button clear item-end>View</button>
+      <button ion-item *ngFor="let h of history" (click)="historyTapped($event, history)">
+        {{h.value}}
+      </button>
     </ion-item>
   </ion-list>
 </ion-content>

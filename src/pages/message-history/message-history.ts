@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import {ListinfoPage} from "../listinfo/listinfo";
+import { ApiProvider } from '../../providers/api/api';
 /**
  * Generated class for the MessageHistoryPage page.
  *
@@ -14,13 +15,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'message-history.html',
 })
 export class MessageHistoryPage {
-  selectedBle: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.selectedBle = navParams.get('ble');
+  selectHistory: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,public api: ApiProvider) {
+    api.getMessage();
+    this.selectHistory = navParams.get('history');
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MessageHistoryPage');
+  // ionViewDidLoad() {
+  //   console.log('ionViewDidLoad MessageHistoryPage');
+  // }
+  historyTapped(event, history) {
+    this.navCtrl.push(ListinfoPage, {
+      history: history
+    })
   }
 
 }

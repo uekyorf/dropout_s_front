@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
+import {IonicPageModule, NavController, NavParams} from 'ionic-angular';
 import { MessageHistoryPage } from './message-history';
 
 @NgModule({
@@ -10,4 +10,7 @@ import { MessageHistoryPage } from './message-history';
     IonicPageModule.forChild(MessageHistoryPage),
   ],
 })
-export class MessageHistoryPageModule {}
+export class MessageHistoryPageModule {
+
+
+}
