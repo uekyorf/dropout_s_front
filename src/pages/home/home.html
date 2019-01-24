@@ -8,12 +8,5 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
-  <button ion-button clear (click)="getData()">Get</button>
+  <button ion-button full (click)="pushPage($event, CreateLetterPage)"><ion-icon name="mail" style="margin-right:1rem;"></ion-icon>置手紙 作成</button>
 </ion-content>
