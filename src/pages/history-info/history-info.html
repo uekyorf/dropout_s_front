@@ -1,5 +1,5 @@
 <!--
-  Generated template for the MessageHistoryPage page.
+  Generated template for the HistoryInfoPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -10,21 +10,21 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>MessageHistory</ion-title>
+    <ion-title>HistoryInfo</ion-title>
   </ion-navbar>
-
 
 </ion-header>
 
 
-
-<ion-content>
+<ion-content padding>
   <ion-list reorder="true">
     <ion-item>
+      <ion-label ion-item *ngFor='let history of historyInfo' (click)="historyInfoTapped($event,historyInfo)">
+        {{ history.value }}
+      </ion-label>
 
-      <button ion-item *ngFor="let h of history" (click)="historyTapped($event, history)">
-        {{ h.value }}
-      </button>
     </ion-item>
+
   </ion-list>
+
 </ion-content>

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
-import { HistoryInfoPage} from "../history-info/history-info";
+
 
 /**
- * Generated class for the MessageHistoryPage page.
+ * Generated class for the HistoryInfoPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,24 +12,23 @@ import { HistoryInfoPage} from "../history-info/history-info";
 
 @IonicPage()
 @Component({
-  selector: 'page-message-history',
-  templateUrl: 'message-history.html',
+  selector: 'page-history-info',
+  templateUrl: 'history-info.html',
 })
-export class MessageHistoryPage {
-  selectHistory: any;
+export class HistoryInfoPage {
+  selectHistoryInfo: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public api: ApiProvider) {
     api.getMessage();
-    this.selectHistory = navParams.get('history');
+    this.selectHistoryInfo = navParams.get('historyInfo');
   }
 
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad MessageHistoryPage');
   // }
-  historyTapped(event, history) {
+  historyInfoTapped(event, historyInfo) {
     this.navCtrl.push(HistoryInfoPage, {
-      history: history
+      historyInfo: historyInfo
     })
   }
-
 }
