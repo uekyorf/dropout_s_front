@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ViewChild,Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
+import 'rxjs/add/observable/interval';
+
 
 /**
  * Generated class for the ContactPage page.
@@ -8,18 +10,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+@IonicPage({
+})
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html',
+
 })
 export class ContactPage {
-
+  @ViewChild(Slides) slides: Slides;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactPage');
   }
+
+
 
 }
