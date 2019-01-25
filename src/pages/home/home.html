@@ -3,10 +3,16 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title></ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <button ion-button full (click)="pushPage($event, CreateLetterPage)"><ion-icon name="mail" style="margin-right:1rem;"></ion-icon>置手紙 作成</button>
+  <h1 style="margin-top: 2.8rem; text-align: center;">カキオク</h1>
+  <div style="margin-top: 20rem;">
+    <button ion-button full (click)="pushCreatePage()">置手紙 作成</button>
+    <button ion-button full (click)="pushCreatePage()">受信履歴</button>
+    <button ion-button full (click)="pushCreatePage()">連絡帳</button>
+    <button ion-button full (click)="pushCreatePage()">その他</button>
+  </div>
 </ion-content>
