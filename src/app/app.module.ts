@@ -7,14 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { SignupPage } from '../pages/signup/signup';
 import { ListPage } from '../pages/list/list';
 import { ListinfoPage } from '../pages/listinfo/listinfo';
 import { CreateLetterPage } from '../pages/create-letter/create-letter';
-import { SignUpPage } from '../signup/signup';
 import { OtherPage } from '../pages/other/other';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+// import { Device } from '@ionic-native/device';
 import { ApiProvider } from '../providers/api/api';
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ApiProvider } from '../providers/api/api';
     ListinfoPage,
     CreateLetterPage,
     OtherPage,
+    SignupPage,
   ],
   imports: [
     BrowserModule,
@@ -40,12 +42,14 @@ import { ApiProvider } from '../providers/api/api';
     ListinfoPage,
     CreateLetterPage,
     OtherPage,
+    SignupPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    ApiProvider
+    ApiProvider,
+    // Device,
   ]
 })
 export class AppModule { }
