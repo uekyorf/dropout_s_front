@@ -20,8 +20,8 @@ import { MockProvider } from '../../providers/mock';
 export class MessageHistoryPage {
   selectHistory: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public  mock: MockProvider) {
-    MockProvider.getSegmentItems();
+  constructor(public navCtrl: NavController, public navParams: NavParams, public api: ApiProvider, public mock: MockProvider) {
+    // MockProvider.getSegmentItems();
     this.selectHistory = navParams.get('history');
   }
 

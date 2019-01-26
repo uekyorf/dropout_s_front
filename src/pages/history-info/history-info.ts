@@ -19,7 +19,7 @@ export class HistoryInfoPage {
   selectHistoryInfo: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public api: ApiProvider) {
-    api.getMessage();
+    // api.getMessage("", "")
     this.selectHistoryInfo = navParams.get('historyInfo');
   }
 

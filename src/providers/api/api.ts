@@ -35,8 +35,8 @@ export class ApiProvider {
     return this.http.get(`/api/ble/get?ble_uuid=${uuid}`);
   }
 
-  getMessage(): Observable<any> {
-    return this.http.get('/api/message/get');
+  getMessage(uuid, user): Observable<any> {
+    return this.http.get(`/api/message/get?ble_uuid=${uuid}?user_name=${user}`);
   }
 
   postSighup(name, uuid): Observable<any> {
