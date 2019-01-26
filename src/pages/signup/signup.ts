@@ -24,7 +24,7 @@ export class SignupPage {
   }
 
   submitButton() {
-    this.api.sighup(this.inputName, UUID.UUID())
+    this.api.postSighup(this.inputName, UUID.UUID())
       .subscribe(
         data => {
           if(data.code === 200) {

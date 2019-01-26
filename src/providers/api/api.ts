@@ -39,12 +39,12 @@ export class ApiProvider {
     return this.http.get('/api/message/get');
   }
 
-  sighup(name, uuid): Observable<any> {
+  postSighup(name, uuid): Observable<any> {
     let postData = {
       "user_name": name,
       "device_name": uuid
     }
-    return this.http.post('/api/user/signup', postData, this.httpOptions)
+    return this.http.post<any>('/api/user/signup', postData, this.httpOptions)
   }
 
   serchUserName(name) :Observable<any> {
