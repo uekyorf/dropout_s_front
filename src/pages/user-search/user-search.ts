@@ -21,7 +21,7 @@ export class UserSearchPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UserSearchPage');
+    console.log('ionViewDidLoad UPage');
   }
 
 
