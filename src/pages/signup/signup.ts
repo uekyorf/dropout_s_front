@@ -24,11 +24,13 @@ export class SignupPage {
   }
 
   submitButton() {
-    this.api.postSighup(this.inputName, UUID.UUID())
+    const uuid=UUID.UUID()
+    this.api.postSighup(this.inputName, uuid)
       .subscribe(
         data => {
           if(data.code === 200) {
             localStorage.setItem("sighinUser", this.inputName);
+            localStorage.setItem("device_uuid",uuid)
             this.navCtrl.setRoot(HomePage);
           }
           else if(data.code === 409) {
