@@ -49,13 +49,15 @@ export class ApiProvider {
 
   PostCleateLetter(message): Observable<any> {
     let postData = {
-      "device_name": message.device_name,
+      "device_name": localStorage.getItem('device_uuid'),
       "title": message.title,
       "body": message.body,
+      "due": message.due,
       "ble_uuid": message.ble_uuid,
       "to_user": message.to_user,
       "to_all_users": message.to_all_users
     }
+    console.log(postData)
     return this.http.post<any>('/api/message/post', postData, this.httpOptions)
   }
 

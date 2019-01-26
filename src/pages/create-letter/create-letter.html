@@ -17,7 +17,7 @@
   <form padding (submit)="submitButton()" #f=ngForm>
     <ion-item>
       <ion-label>タイトル</ion-label>
-      <ion-input type="text" placeholder="タイトルをいれてね" [(ngModel)]="message.itle" name="title"></ion-input>
+      <ion-input type="text" placeholder="タイトルをいれてね" [(ngModel)]="message.title" name="title"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -28,11 +28,11 @@
 
     <ion-item>
       <ion-label>有効期限</ion-label>
-      <ion-datetime display-format="YYYY/MMM/DD, HH:mm" picker-format="YYYY-MMM-DD-HH-mm"> </ion-datetime>
+      <ion-datetime display-format="YYYY/MMM/DD, HH:mm" picker-format="YYYY-MMM-DD-HH-mm" [(ngModel)]="message.due" name="due"> </ion-datetime>
     </ion-item>
 
     <ion-item>
-      <ion-label>部屋</ion-label>
+      <ion-label>部屋UUID</ion-label>
       <ion-input type="text" placeholder="404" [(ngModel)]="message.ble_uuid" name="ble_uuid"></ion-input>
     </ion-item>
 
@@ -43,14 +43,9 @@
 
     <ion-item>
       <ion-label>送信先</ion-label>
-      <ion-list>
-        <ion-item>
-          <ion-label>Users</ion-label>
-          <!-- <ion-select [(ngModel)]="message.to_user" multiple="true" name="to_user">
-            <ion-option *ngFor="#user of users" value="{{user.name}}" [checked]="false">{{user.name}}</ion-option>
-          </ion-select>   -->
-        </ion-item>
-      </ion-list>
+      <ion-select [(ngModel)]="message.to_user" multiple="true" name="to_user">
+        <ion-option *ngFor="let user of users" [value]="user.name">{{user.name}}</ion-option>
+      </ion-select>
     </ion-item>
 
     <p *ngIf="errorMessage && errorMessage.length> 0">{{errorMessage}}</p>

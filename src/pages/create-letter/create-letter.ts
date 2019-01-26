@@ -17,9 +17,9 @@ import { MessagePost } from '../../providers/interfaces/MessagePost'
 })
 export class CreateLetterPage {
   message:MessagePost = {
+    device_name:'',
     title:  '',
     body:  '',
-    device_name:'',
     due: '',
     ble_uuid: '',
     to_user: [],
@@ -27,8 +27,8 @@ export class CreateLetterPage {
   }
   errorMessage: string = '';
   users = [
-    { name: "hoge"},
-    { name: "hige"},
+    { name: "hoge", id:0 },
+    { name: "hige", id:1 },
   ]
 
 
@@ -39,6 +39,7 @@ export class CreateLetterPage {
     this.api.PostCleateLetter(this.message)
       .subscribe(
         data => {
+          console.log(data)
           if(data.code === 200) {
             console.log(data.message)
           }
