@@ -30,7 +30,7 @@ export class CreateLetterPage {
   }
 
   submitButton() {
-    this.api.PostCleateLetter(this.message.deviceName,this.message.title,this.message.body,this.message.due,this.message.bleUuid,this.message.toUser,this.message.toAllUsers)
+    this.api.PostCleateLetter(this.message)
       .subscribe(
         data => {
           if(data.code === 200) {

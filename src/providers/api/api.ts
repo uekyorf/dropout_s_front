@@ -47,16 +47,15 @@ export class ApiProvider {
     return this.http.post<any>('/api/user/signup', postData, this.httpOptions)
   }
 
-  PostCleateLetter(device_name,title,body,due,ble_uuid,to_user,to_all_users): Observable<any> {
+  PostCleateLetter(message): Observable<any> {
     let postData = {
-      "device_name": device_name,
-      "title": title,
-      "body":body,
-      "ble_uuid":ble_uuid,
-      "to_user":to_user,
-      "to_all_users":to_all_users
+      "device_name": message.device_name,
+      "title": message.title,
+      "body": message.body,
+      "ble_uuid": message.ble_uuid,
+      "to_user": message.to_user,
+      "to_all_users": message.to_all_users
     }
-
     return this.http.post<any>('/api/message/post', postData, this.httpOptions)
   }
 
