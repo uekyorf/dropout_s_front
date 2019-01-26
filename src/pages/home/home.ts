@@ -5,6 +5,9 @@ import { Ble } from '../../providers/interfaces/Ble';
 import { IBeacon, IBeaconPluginResult } from '@ionic-native/ibeacon';
 import { Platform } from 'ionic-angular';
 
+import { CreateLetterPage } from '../create-letter/create-letter';
+import { OtherPage } from '../other/other';;
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -74,7 +77,19 @@ export class HomePage {
       })
       .catch((error: any) => {
         console.error(`Failed to start ranging beacon region: `, beaconRegion);
-      });
+    });
   }
-
+  // めんどいので各ページでFunctionを作成
+  public pushCreatePage() {
+    this.navCtrl.push(CreateLetterPage);
+  }
+  public pushMessagePage() {
+    this.navCtrl.push(CreateLetterPage);
+  }
+  public pushContactPage() {
+    this.navCtrl.push(CreateLetterPage);
+  }
+  public pushOtherPage() {
+    this.navCtrl.push(OtherPage);
+  }
 }
