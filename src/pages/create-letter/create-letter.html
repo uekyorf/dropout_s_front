@@ -15,22 +15,50 @@
 
 <ion-content padding>
   <form padding (submit)="submitButton()" #f=ngForm>
-    <ion-input type="text" placeholder="タイトルをいれてね" [(ngModel)]="inputTitle" name="title"></ion-input>
-    <ion-textarea type="text" placeholder="メッセージをいれてね" [(ngModel)]="inputBody" name="body" rows="5">
-    </ion-textarea>
+    <ion-item>
+      <ion-label>タイトル</ion-label>
+      <ion-input type="text" placeholder="タイトルをいれてね" [(ngModel)]="message.itle" name="title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>本文</ion-label>
+      <ion-textarea type="text" placeholder="メッセージをいれてね" [(ngModel)]="message.body" name="body" rows="5">
+      </ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>有効期限</ion-label>
+      <ion-datetime display-format="YYYY/MMM/DD, HH:mm" picker-format="YYYY-MMM-DD-HH-mm"> </ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        部屋
+      </ion-label>
+      <p>
+        {{ item }}
+      </p>
+    </ion-item>
 
     <ion-item>
       <ion-checkbox></ion-checkbox>
       <ion-label>全ユーザへ送信</ion-label>
     </ion-item>
 
-    <ion-list>
-
-    </ion-list>
+    <ion-item>
+      <ion-label>
+        送信先
+      </ion-label>
+      <ion-list>
+        <div ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+          {{ item }}
+        </div>
+      </ion-list>
+    </ion-item>
 
     <p *ngIf="
       errorMessage && errorMessage.length> 0"> {{errorMessage}}</p>
-    <button ion-button full type="submit" [disabled]="!f.form.valid">とうこう！</button>
+    <button ion-button full round type="submit" [disabled]="!f.form.valid">とうこう！</button>
   </form>
 </ion-content>
 

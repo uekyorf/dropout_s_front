@@ -14,23 +14,23 @@ import { ApiProvider } from '../../providers/api/api';
   templateUrl: 'create-letter.html',
 })
 export class CreateLetterPage {
-  title: string = 'aaa';// TODO: けす
-  body: string = 'aaa'; // TODO: けす
+  message = {
+    title:  '',
+    body:  '',
+    deviceName:'',
+    due: '',
+    bleUuid: '',
+    toUser:'',
+    toAllUsers: false,
+  }
   errorMessage: string = '';
-  deviceName: string = localStorage.getItem("device_uuid")
-  due: string ='';
-  bleUuid: string ='ff4f5d76-304a-42ff-a9e2-ef25178b1055'; // TODO: なおす
-  toUser:string[] = [localStorage.getItem("sighinUser")];// TODO: なおす
-  toAllUsers:boolean = false;// TODO: なおす
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public api: ApiProvider) {
   }
 
   submitButton() {
-
-    console.log(this.toUser)
-    console.log(this.deviceName)
-    this.api.PostCleateLetter(this.deviceName,this.title,this.body,this.due,this.bleUuid,this.toUser,this.toAllUsers)
+    this.api.PostCleateLetter(this.message.deviceName,this.message.title,this.message.body,this.message.due,this.message.bleUuid,this.message.toUser,this.message.toAllUsers)
       .subscribe(
         data => {
           if(data.code === 200) {
@@ -38,7 +38,7 @@ export class CreateLetterPage {
           }
           else if(data.code === 404) {
             this.errorMessage = data.message;
-            　console.log(this.errorMessage)
+            console.log(this.errorMessage)
           }
           else if(data.code === 400) {
             this.errorMessage = data.message;
