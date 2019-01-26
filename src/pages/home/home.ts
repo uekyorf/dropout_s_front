@@ -6,7 +6,7 @@ import { IBeacon, IBeaconPluginResult } from '@ionic-native/ibeacon';
 import { Platform } from 'ionic-angular';
 
 import { CreateLetterPage } from '../create-letter/create-letter';
-import { OtherPage } from '../other/other';;
+import { OtherPage } from '../other/other';
 
 @Component({
   selector: 'page-home',
@@ -17,6 +17,7 @@ export class HomePage {
   private uuid: string = '00000000-0000-0000-0000-000000000000';
   constructor(public navCtrl: NavController, public api: ApiProvider, private readonly ibeacon: IBeacon, private readonly platform: Platform) {
     this.enableDebugLogs();
+    this.onStartClicked()
   }
 
   public enableDebugLogs(): void {
@@ -41,9 +42,11 @@ export class HomePage {
 
     // Subscribe to some of the delegate's event handlers
     delegate.didRangeBeaconsInRegion().subscribe(
-      (pluginResult: IBeaconPluginResult) => console.log('didRangeBeaconsInRegion0: ', pluginResult),
-      (data: any) => { console.log(`didRangeBeaconsInRegion1:`, JSON.stringify(data,null,4)) },
-      // (error: any) => console.error(`Failure during ranging: `, error),
+      (pluginResult: IBeaconPluginResult) => {
+        console.log("近さは: "+ pluginResult.beacons[0].proximity);
+        this.
+      },
+      (error: any) => console.error(`Failure during ranging: `, error),
     );
     delegate.didStartMonitoringForRegion().subscribe(
       (pluginResult: IBeaconPluginResult) => console.log('didStartMonitoringForRegion: ', pluginResult),
@@ -52,7 +55,7 @@ export class HomePage {
 
     delegate.didEnterRegion().subscribe(
       (pluginResult: IBeaconPluginResult) => {
-        console.log('didEnterRegion: ', pluginResult);
+        console.log('離れたとき: ', pluginResult);
       }
     );
 
