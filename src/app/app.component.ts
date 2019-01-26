@@ -4,8 +4,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { SignUpPage } from '../signup/signup';
 import { ListPage } from '../pages/list/list';
+import { SignupPage } from '../pages/signup/signup';
 
 @Component({
   templateUrl: 'app.html'
@@ -30,7 +30,7 @@ export class MyApp {
 
   initializeApp() {
     if (localStorage.getItem('signinUser') === '') {
-      this.rootPage = SignUpPage;
+      this.rootPage = SignupPage;
     } else {
       this.rootPage = HomePage;
     }
@@ -39,6 +39,12 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      // localStorage.setItem('sighinUser', '');
+      if(localStorage.getItem('sighinUser') === null) {
+        this.rootPage = SignupPage;
+      } else {
+        this.rootPage = HomePage;
+      }
     });
   }
 
