@@ -1,5 +1,7 @@
 import { Component,Input ,ViewChild} from '@angular/core';
 import { IonicPage, NavController, NavParams,Slides} from 'ionic-angular';
+import { ApiProvider } from '../../providers/api/api';
+import {ListinfoPage} from "../listinfo/listinfo";
 
 /**
  * Generated class for the UserSearchPage page.
@@ -15,11 +17,23 @@ import { IonicPage, NavController, NavParams,Slides} from 'ionic-angular';
 })
 export class UserSearchPage {
   @Input() text:string;
-  items = ['a','b','c','d','a','b','c','d'];
+  users: Array<{search_word: string}>;
   @ViewChild(Slides) slides: Slides;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams,public api: ApiProvider) {
+    api.getUser()
+      .subscribe(
+        data => {
+          this.users = data['result'];
+        },
+        err => console.log(err),
+        () => {}
+      );
   }
 
+  bleTapped(event, user) {
+    this.navCtrl.push(ListinfoPage, {
+      user: user
+    })
+  }
 
 }
