@@ -24,20 +24,20 @@ export class SignupPage {
   }
 
   submitButton() {
-    const uuid=UUID.UUID()
+    const uuid = UUID.UUID()
     this.api.postSighup(this.inputName, uuid)
       .subscribe(
         data => {
-          if(data.code === 200) {
-            localStorage.setItem("sighinUser", this.inputName);
-            localStorage.setItem("device_uuid",uuid)
+          if (data.code === 200) {
+            localStorage.setItem("signinUser", this.inputName);
+            localStorage.setItem("device_uuid", uuid)
             this.navCtrl.setRoot(HomePage);
           }
-          else if(data.code === 409) {
+          else if (data.code === 409) {
             this.errorMessage = "なまえががぶってるぉ";
           }
         }, err => console.log(err),
-        () => {}
+        () => { }
       )
   }
 

@@ -29,18 +29,13 @@ export class MyApp {
   }
 
   initializeApp() {
-    if (localStorage.getItem('signinUser') === '') {
-      this.rootPage = SignupPage;
-    } else {
-      this.rootPage = HomePage;
-    }
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       // localStorage.setItem('sighinUser', '');
-      if(localStorage.getItem('sighinUser') === null) {
+      if (localStorage.getItem('signinUser') === null) {
         this.rootPage = SignupPage;
       } else {
         this.rootPage = HomePage;

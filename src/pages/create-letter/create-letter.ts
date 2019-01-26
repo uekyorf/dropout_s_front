@@ -16,10 +16,10 @@ import { MessagePost } from '../../providers/interfaces/MessagePost'
   templateUrl: 'create-letter.html',
 })
 export class CreateLetterPage {
-  message:MessagePost = {
-    device_name:'',
-    title:  '',
-    body:  '',
+  message: MessagePost = {
+    device_name: '',
+    title: '',
+    body: '',
     due: '',
     ble_uuid: '',
     to_user: [],
@@ -27,8 +27,8 @@ export class CreateLetterPage {
   }
   errorMessage: string = '';
   users = [
-    { name: "hoge", id:0 },
-    { name: "hige", id:1 },
+    { name: "user1", id: 0 },
+    { name: "user2", id: 1 },
   ]
 
 
@@ -40,19 +40,19 @@ export class CreateLetterPage {
       .subscribe(
         data => {
           console.log(data)
-          if(data.code === 200) {
+          if (data.code === 200) {
             console.log(data.message)
           }
-          else if(data.code === 404) {
+          else if (data.code === 404) {
             this.errorMessage = data.message;
             console.log(this.errorMessage)
           }
-          else if(data.code === 400) {
+          else if (data.code === 400) {
             this.errorMessage = data.message;
             console.log(this.errorMessage)
           }
         }, err => console.log(err),
-        () => {}
+        () => { }
       )
   }
 
