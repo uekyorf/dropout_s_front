@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
+
+import { MessagePost } from '../../providers/interfaces/MessagePost'
 /**
  * Generated class for the CreateLetterPage page.
  *
@@ -14,16 +16,20 @@ import { ApiProvider } from '../../providers/api/api';
   templateUrl: 'create-letter.html',
 })
 export class CreateLetterPage {
-  message = {
+  message:MessagePost = {
     title:  '',
     body:  '',
-    deviceName:'',
+    device_name:'',
     due: '',
-    bleUuid: '',
-    toUser:'',
-    toAllUsers: false,
+    ble_uuid: '',
+    to_user: [],
+    to_all_users: false,
   }
   errorMessage: string = '';
+  users = [
+    { name: "hoge"},
+    { name: "hige"},
+  ]
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public api: ApiProvider) {

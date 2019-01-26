@@ -32,32 +32,28 @@
     </ion-item>
 
     <ion-item>
-      <ion-label>
-        部屋
-      </ion-label>
-      <p>
-        {{ item }}
-      </p>
+      <ion-label>部屋</ion-label>
+      <ion-input type="text" placeholder="404" [(ngModel)]="message.ble_uuid" name="ble_uuid"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-checkbox></ion-checkbox>
+      <ion-checkbox [(ngModel)]="message.to_all_users" name="to_all_users"></ion-checkbox>
       <ion-label>全ユーザへ送信</ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-label>
-        送信先
-      </ion-label>
+      <ion-label>送信先</ion-label>
       <ion-list>
-        <div ion-item *ngFor="let item of items" (click)="itemSelected(item)">
-          {{ item }}
-        </div>
+        <ion-item>
+          <ion-label>Users</ion-label>
+          <!-- <ion-select [(ngModel)]="message.to_user" multiple="true" name="to_user">
+            <ion-option *ngFor="#user of users" value="{{user.name}}" [checked]="false">{{user.name}}</ion-option>
+          </ion-select>   -->
+        </ion-item>
       </ion-list>
     </ion-item>
 
-    <p *ngIf="
-      errorMessage && errorMessage.length> 0"> {{errorMessage}}</p>
+    <p *ngIf="errorMessage && errorMessage.length> 0">{{errorMessage}}</p>
     <button ion-button full round type="submit" [disabled]="!f.form.valid">とうこう！</button>
   </form>
 </ion-content>
