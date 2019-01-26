@@ -38,4 +38,16 @@ export class ApiProvider {
   getMessage(): Observable<any> {
     return this.http.get('/api/message/get');
   }
+
+  sighup(name, uuid): Observable<any> {
+    let postData = {
+      "user_name": name,
+      "device_name": uuid
+    }
+    return this.http.post('/api/user/signup', postData, this.httpOptions)
+  }
+
+  serchUserName(name) :Observable<any> {
+    return this.http.get<any>(`/api/user/get?search_word=${name}&`);
+  }
 }
