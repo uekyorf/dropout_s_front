@@ -19,6 +19,7 @@ import 'rxjs/add/observable/interval';
 })
 export class ContactPage {
   @ViewChild(Slides) slides: Slides;
+  user: string = "userSearch";
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
