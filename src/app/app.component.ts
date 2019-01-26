@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+import { SignUpPage } from '../signup/signup';
 import { ListPage } from '../pages/list/list';
 
 @Component({
@@ -14,7 +15,7 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
@@ -28,6 +29,11 @@ export class MyApp {
   }
 
   initializeApp() {
+    if (localStorage.getItem('signinUser') === '') {
+      this.rootPage = SignUpPage;
+    } else {
+      this.rootPage = HomePage;
+    }
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
