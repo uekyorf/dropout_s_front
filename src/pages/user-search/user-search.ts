@@ -15,15 +15,11 @@ import { IonicPage, NavController, NavParams,Slides} from 'ionic-angular';
 })
 export class UserSearchPage {
   @Input() text:string;
-  items = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado','Windstorm', 'Bombasto', 'Magneta', 'Tornado'];
+  items = ['a','b','c','d','a','b','c','d'];
   @ViewChild(Slides) slides: Slides;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UPage');
   }
-
 
 
 }

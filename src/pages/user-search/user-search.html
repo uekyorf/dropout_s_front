@@ -23,15 +23,17 @@
       </ion-row>
     </ion-grid>
   </form>
-<ion-slides #Slides>
-  <ion-slide>
-    <ion-item *ngFor="let item of items">
-    <ion-label>
-     {{item}}
-    </ion-label>
-    </ion-item>
-  </ion-slide>
-</ion-slides>
+<ion-list >
+  <ion-item *ngFor="let i of items">{{i}}</ion-item>
+</ion-list>
 
+
+<ion-scroll>
+<ion-item *ngFor="let item of items">
+<ion-label>
+{{item}}
+</ion-label>
+</ion-item>
+</ion-scroll>
 
 
