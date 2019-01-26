@@ -3,17 +3,37 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title></ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <h1 style="margin-top: 2.8rem; text-align: center;">
+    <img src="../../assets/imgs/logo.png" style="width: 15rem; height: auto;" />
+  </h1>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
-  <button ion-button clear (click)="getData()">Get</button>
+  <div style="position:absolute; bottom: 0; width: 91%;">
+    <button ion-button full round (click)="pushCreatePage()" style="margin-top: 1rem; margin-bottom:1rem;">
+      <ion-icon name="send"></ion-icon>
+      　 かきおき登録
+    </button>
+    <button ion-button full round (click)="pushMessagePage()" style="margin-top: 1rem; margin-bottom:1rem;">
+      <ion-icon name="mail-open"></ion-icon>
+      　 　受信履歴　
+    </button>
+    <button ion-button full round (click)="pushContactPage()" style="margin-top: 1rem; margin-bottom:1rem;">
+      <ion-icon name="people"></ion-icon>
+      　 　連絡帳　　
+    </button>
+    <button ion-button full round (click)="pushOtherPage()" style="margin-top: 1rem; margin-bottom:1rem;">
+      <ion-icon name="more"></ion-icon>
+      　 　その他　　
+    </button>
+  </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>dropout_s</ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -7,9 +7,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { SignupPage } from '../pages/signup/signup';
 import { ListPage } from '../pages/list/list';
 import { ListinfoPage } from '../pages/listinfo/listinfo';
 import { MessageHistoryPage} from "../pages/message-history/message-history";
+import { CreateLetterPage } from '../pages/create-letter/create-letter';
+import { OtherPage } from '../pages/other/other';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -22,6 +25,9 @@ import { ApiProvider } from '../providers/api/api';
     ListPage,
     ListinfoPage,
     MessageHistoryPage,
+    CreateLetterPage,
+    OtherPage,
+    SignupPage,
   ],
   imports: [
     BrowserModule,
@@ -36,12 +42,15 @@ import { ApiProvider } from '../providers/api/api';
     ListPage,
     ListinfoPage,
     MessageHistoryPage,
+    CreateLetterPage,
+    OtherPage,
+    SignupPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     ApiProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }
