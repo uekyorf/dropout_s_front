@@ -13,12 +13,13 @@ export class ListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public api: ApiProvider) {
     api.getBleList()
-      .subscribe(data => {
-        this.bles = data['result'];
-      },
-      err => console.log(err),
-      () => {}
-    );
+      .subscribe(
+        data => {
+          this.bles = data['result'];
+        },
+        err => console.log(err),
+        () => {}
+      );
   }
 
   bleTapped(event, ble) {

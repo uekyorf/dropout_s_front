@@ -9,8 +9,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { ListinfoPage } from '../pages/listinfo/listinfo';
-import { ContactPage } from '../pages/contact/contact';
-import {UserSearchPage} from "../pages/user-search/user-search";
+import { CreateLetterPage } from '../pages/create-letter/create-letter';
+import { OtherPage } from '../pages/other/other';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -22,8 +22,8 @@ import { ApiProvider } from '../providers/api/api';
     HomePage,
     ListPage,
     ListinfoPage,
-    ContactPage,
-    UserSearchPage
+    CreateLetterPage,
+    OtherPage,
   ],
   imports: [
     BrowserModule,
@@ -37,8 +37,8 @@ import { ApiProvider } from '../providers/api/api';
     HomePage,
     ListPage,
     ListinfoPage,
-    ContactPage,
-    UserSearchPage,
+    CreateLetterPage,
+    OtherPage,
   ],
   providers: [
     StatusBar,

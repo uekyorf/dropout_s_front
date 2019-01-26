@@ -4,5 +4,11 @@
     "cordova": {}
   },
   "type": "ionic-angular",
-  "id": "141376ca"
+  "id": "141376ca",
+  "proxies" :[
+    {
+      "path": "/api",
+      "proxyUrl": "https://kakioku-api-server.herokuapp.com/api"
+    }
+  ]
 }
