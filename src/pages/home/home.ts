@@ -4,7 +4,7 @@ import { ApiProvider } from '../../providers/api/api';
 import { Ble } from '../../providers/interfaces/Ble';
 
 import { CreateLetterPage } from '../create-letter/create-letter';
-import { OtherPage } from '../other/other';;
+import { OtherPage } from '../other/other';
 
 @Component({
   selector: 'page-home',
