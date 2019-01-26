@@ -20,8 +20,7 @@ export class MockProvider {
   }
 
   getJsonData(){
-    this.http.get('../test.json').map(res
-    => res.json()).subscribe(data => {
+    this.http.get('../test.json').map(res => res.json()).subscribe(data => {
       console.log(data);
     });
   }
