@@ -32,7 +32,7 @@ export class ApiProvider {
   }
 
   getBle(uuid): Observable<any> {
-    return this.http.get(`/api/ble/get?ble_uuid=${uuid}`);
+    return this.http.get(`/api/ble/get?ble_uuid=${uuid}`, this.httpOptions);
   }
 
   getMessage(): Observable<any> {

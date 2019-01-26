@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController, Platform } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { Ble } from '../../providers/interfaces/Ble';
 import { IBeacon, IBeaconPluginResult } from '@ionic-native/ibeacon';
-import { Platform } from 'ionic-angular';
 
 import { CreateLetterPage } from '../create-letter/create-letter';
 import { OtherPage } from '../other/other';
@@ -14,8 +13,10 @@ import { OtherPage } from '../other/other';
 })
 export class HomePage {
   bles: Ble[];
-  private uuid: string = '00000000-0000-0000-0000-000000000000';
-  constructor(public navCtrl: NavController, public api: ApiProvider, private readonly ibeacon: IBeacon, private readonly platform: Platform) {
+  area_name: string;
+  // date = Math.floor(new Date().getTime()/ 1000);
+  private uuid: string = 'ff4f5d76-304a-42ff-a9e2-ef25178b1055';
+  constructor(public navCtrl: NavController, public api: ApiProvider, private readonly ibeacon: IBeacon, private readonly platform: Platform, public toastCtrl: ToastController) {
     this.enableDebugLogs();
     this.onStartClicked()
   }
@@ -43,8 +44,12 @@ export class HomePage {
     // Subscribe to some of the delegate's event handlers
     delegate.didRangeBeaconsInRegion().subscribe(
       (pluginResult: IBeaconPluginResult) => {
-        console.log("近さは: "+ pluginResult.beacons[0].proximity);
-        this.
+        if(pluginResult !== null) {
+          console.log(pluginResult.beacons[0].uuid);
+          if(pluginResult.beacons[0].proximity === "ProximityImmediate") {
+            this.pushBeacon(pluginResult.beacons[0].uuid)
+          }
+        }
       },
       (error: any) => console.error(`Failure during ranging: `, error),
     );
@@ -82,6 +87,67 @@ export class HomePage {
         console.error(`Failed to start ranging beacon region: `, beaconRegion);
     });
   }
+
+  // pushBeacon
+  public pushBeacon(uuid:string) {
+    let date = Math.floor(new Date().getTime() / 1000);
+    // let data = []
+    //   data.push({uuid: uuid, time: date})
+      // localStorage.setItem("uuidList", JSON.stringify(data));
+      let uuidList: any = JSON.parse(localStorage.getItem("uuidList"))
+      console.log("uuidList2"+ JSON.stringify(uuidList))
+    // console.log(uuidList);
+    if(uuidList === null  || uuidList === undefined || uuidList === '') {
+      let data = []
+      data.push({uuid: uuid, time: date})
+      localStorage.setItem("uuidList", JSON.stringify(data));
+      console.log("uuidList2"+ uuidList)
+    } else {
+      let uuidList2: any = uuidList;
+      uuidList2.filter((item, index) => {
+        if(item.uuid === uuid) {
+          console.log("一致している")
+          console.log(date +"-"+ item.time +"="+ (date-item.time))
+          if(date - item.time > 10) {
+            this.api.getBle(item.uuid)
+              .subscribe(
+                data => {
+                  this.area_name = data['result']['area_name']
+                  console.log(this.area_name)
+                  const toast = this.toastCtrl.create({
+                    message: `Message: ${this.area_name}`,
+                    duration: 10000,
+                    showCloseButton: true
+                  });
+                  toast.present();
+                },
+                err => console.log(err),
+                () => {}
+              )
+          }
+        }
+        item.time = date;
+      })
+      localStorage.setItem("uuidList", JSON.stringify(uuidList2));
+    }
+  }
+
+  public presentToast() {
+    let toast = this.toastCtrl.create({
+      message: `User was added successfully User was added successfully`,
+      duration: 3000,
+      cssClass: 'toast-message',
+      showCloseButton: true
+      // position: 'top'
+    });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
+  }
+
   // めんどいので各ページでFunctionを作成
   public pushCreatePage() {
     this.navCtrl.push(CreateLetterPage);
