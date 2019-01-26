@@ -8,12 +8,27 @@
 </ion-header>
 
 <ion-content padding>
-  <h1 style="margin-top: 2.8rem; text-align: center;">カキオク</h1>
-  <div style="margin-top: 20rem;">
-    <button ion-button full (click)="pushCreatePage()">置手紙 作成</button>
-    <button ion-button full (click)="pushMessagePage()">受信履歴</button>
-    <button ion-button full (click)="pushContactPage()">連絡帳</button>
-    <button ion-button full (click)="pushOtherPage()">その他</button>
+  <h1 style="margin-top: 2.8rem; text-align: center;">
+    <img src="../../assets/imgs/logo.png" style="width: 15rem; height: auto;" />
+  </h1>
+
+  <div style="margin-top:5rem;">
+    <button ion-button full round (click)="pushCreatePage()" style="margin-top: 1rem; margin-bottom:1rem;">
+      <ion-icon name="send"></ion-icon>
+      　 かきおき登録
+    </button>
+    <button ion-button full round (click)="pushMessagePage()" style="margin-top: 1rem; margin-bottom:1rem;">
+      <ion-icon name="mail-open"></ion-icon>
+      　 　受信履歴　
+    </button>
+    <button ion-button full round (click)="pushContactPage()" style="margin-top: 1rem; margin-bottom:1rem;">
+      <ion-icon name="people"></ion-icon>
+      　 　連絡帳　　
+    </button>
+    <button ion-button full round (click)="pushOtherPage()" style="margin-top: 1rem; margin-bottom:1rem;">
+      <ion-icon name="more"></ion-icon>
+      　 　その他　　
+    </button>
   </div>
 </ion-content>
 
