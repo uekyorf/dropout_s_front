@@ -13,6 +13,7 @@ import { CreateLetterPage } from '../pages/create-letter/create-letter';
 import { OtherPage } from '../pages/other/other';
 import {UserSearchPage} from "../pages/user-search/user-search";
 import {ContactPage} from "../pages/contact/contact";
+import {UserListPage} from "../pages/user-list/user-list";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -28,6 +29,7 @@ import { ApiProvider } from '../providers/api/api';
     OtherPage,
     UserSearchPage,
     ContactPage,
+    UserListPage,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,7 @@ import { ApiProvider } from '../providers/api/api';
     OtherPage,
     UserSearchPage,
     ContactPage,
+    UserListPage,
   ],
   providers: [
     StatusBar,
