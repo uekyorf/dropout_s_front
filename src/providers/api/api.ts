@@ -39,7 +39,7 @@ export class ApiProvider {
     return this.http.get('/api/message/get');
   }
 
-  PostSighup(name, uuid): Observable<any> {
+  postSighup(name, uuid): Observable<any> {
     let postData = {
       "user_name": name,
       "device_name": uuid

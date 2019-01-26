@@ -27,18 +27,21 @@ export class CreateLetterPage {
   }
 
   submitButton() {
-    this.api.PostCleateLetter(this.title,this.body,this.deviceName,this.due,this.bleUuid,this.toUser,this.toAllUsers)
+
+    console.log(this.toUser)
+    console.log(this.deviceName)
+    this.api.PostCleateLetter(this.deviceName,this.title,this.body,this.due,this.bleUuid,this.toUser,this.toAllUsers)
       .subscribe(
         data => {
           if(data.code === 200) {
-            console.log("成功！")
+            console.log(data.message)
           }
           else if(data.code === 404) {
-            this.errorMessage = "有効な値がありません";
+            this.errorMessage = data.message;
             　console.log(this.errorMessage)
           }
           else if(data.code === 400) {
-            this.errorMessage = "リクエストに問題があります";
+            this.errorMessage = data.message;
             console.log(this.errorMessage)
           }
         }, err => console.log(err),
