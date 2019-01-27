@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ApiProvider } from '../../providers/api/api';
 
+import { MessagePost } from '../../providers/interfaces/MessagePost'
 /**
  * Generated class for the CreateLetterPage page.
  *
@@ -14,12 +16,44 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'create-letter.html',
 })
 export class CreateLetterPage {
+  message: MessagePost = {
+    device_name: '',
+    title: '',
+    body: '',
+    due: '',
+    ble_uuid: '',
+    to_user: [],
+    to_all_users: false,
+  }
+  errorMessage: string = '';
+  users = [
+    { name: "user1", id: 0 },
+    { name: "user2", id: 1 },
+  ]
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public api: ApiProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CreateLetterPage');
+  submitButton() {
+    this.api.PostCleateLetter(this.message)
+      .subscribe(
+        data => {
+          console.log(data)
+          if (data.code === 200) {
+            console.log(data.message)
+          }
+          else if (data.code === 404) {
+            this.errorMessage = data.message;
+            console.log(this.errorMessage)
+          }
+          else if (data.code === 400) {
+            this.errorMessage = data.message;
+            console.log(this.errorMessage)
+          }
+        }, err => console.log(err),
+        () => { }
+      )
   }
 
 }
