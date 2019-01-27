@@ -35,9 +35,10 @@ export class ApiProvider {
     return this.http.get(`/api/ble/get?ble_uuid=${uuid}`, this.httpOptions);
   }
 
-  getMessage(): Observable<any> {
-    return this.http.get('/api/message/get');
-  }
+  getMessage(uuid): Observable<any> {
+    let user_name = localStorage.getItem('signinUser');
+    return this.http.get(`/api/message/get?ble_uuid=${uuid}&user_name=${user_name}`, this.httpOptions);
+}
 
   postSighup(name, uuid): Observable<any> {
     let postData = {

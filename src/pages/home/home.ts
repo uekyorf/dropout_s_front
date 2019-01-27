@@ -13,7 +13,7 @@ import { OtherPage } from '../other/other';
 })
 export class HomePage {
   bles: Ble[];
-  area_name: string;
+  message: string;
   // date = Math.floor(new Date().getTime()/ 1000);
   private uuid: string = 'ff4f5d76-304a-42ff-a9e2-ef25178b1055';
   constructor(public navCtrl: NavController, public api: ApiProvider, private readonly ibeacon: IBeacon, private readonly platform: Platform, public toastCtrl: ToastController) {
@@ -108,15 +108,16 @@ export class HomePage {
         if(item.uuid === uuid) {
           console.log("一致している")
           console.log(date +"-"+ item.time +"="+ (date-item.time))
-          if(date - item.time > 10) {
-            this.api.getBle(item.uuid)
+          if(date - item.time > 30) {
+            this.api.getMessage(item.uuid)
               .subscribe(
                 data => {
-                  this.area_name = data['result']['area_name']
-                  console.log(this.area_name)
+                  let result = data['result']
+                  let node = result.length-1
+                  this.message = data['result'][node]['body']
                   const toast = this.toastCtrl.create({
-                    message: `Message: ${this.area_name}`,
-                    duration: 10000,
+                    message: `Message: ${this.message}`,
+                    duration: 5000,
                     showCloseButton: true
                   });
                   toast.present();
