@@ -17,14 +17,8 @@
 
 
 <ion-content padding>
-  <ion-list reorder="true">
-    <ion-item>
-      <ion-label ion-item *ngFor='let history of historyInfo' (click)="historyInfoTapped($event,historyInfo)">
-        {{ history.value }}
-      </ion-label>
-
-    </ion-item>
-
-  </ion-list>
-
+  {{ selectHistory.title }}
+  {{ selectHistory.body}}
+  {{ selectHistory.created_at }}
+  {{ selectHistory.UserID }}
 </ion-content>

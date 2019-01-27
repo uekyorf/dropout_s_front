@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {DateTime, IonicPage, NavController, NavParams} from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { HistoryInfoPage} from "../history-info/history-info";
 import { MockProvider } from '../../providers/mock';
@@ -18,26 +18,31 @@ import { MockProvider } from '../../providers/mock';
   providers: [MockProvider],
 })
 export class MessageHistoryPage {
+  // selectHistory: Array<{title: string, body: string, created_at: DateTime,userID:String}>;
   selectHistory: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public api: ApiProvider, public mock: MockProvider) {
     // MockProvider.getSegmentItems();
-    this.selectHistory = navParams.get('history');
+
+    this.selectHistory = localStorage.getItem("uuidList");
+
   }
 
-  ionViewDidLoad() {
-    this.selectHistory.getJsonData().subscribe(
-      result =>{
-        this.selectHistory=result.data.children;
 
-      }
-    );
-    console.log('ionViewDidLoad MessageHistoryPage');
-  }
-  historyTapped(event, history) {
+
+  // ionViewDidLoad() {
+  //   this.selectHistory.getJsonData().subscribe(
+  //     result =>{
+  //       this.selectHistory=result.data.children;
+  //
+  //     }
+  //   );
+  //   console.log('ionViewDidLoad MessageHistoryPage');
+  // }
+  //readStorege
+  historyTapped(event, selectHistory) {
     this.navCtrl.push(HistoryInfoPage, {
       history: history
     })
   }
-
 }

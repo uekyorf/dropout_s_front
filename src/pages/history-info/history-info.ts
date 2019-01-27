@@ -16,11 +16,11 @@ import { ApiProvider } from '../../providers/api/api';
   templateUrl: 'history-info.html',
 })
 export class HistoryInfoPage {
-  selectHistoryInfo: any;
+  selectHistory: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public api: ApiProvider) {
     // api.getMessage("", "")
-    this.selectHistoryInfo = navParams.get('historyInfo');
+    this.selectHistory = navParams.get('historyInfo');
   }
 
   // ionViewDidLoad() {

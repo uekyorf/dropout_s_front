@@ -22,9 +22,10 @@
   <ion-list reorder="true">
     <ion-item>
 
-      <button ion-item *ngFor="let h of history" (click)="historyTapped($event, history)">
+      <button ion-item *ngFor="let h of selectHistory" (click)="historyTapped($event, history)">
         {{ h.value }}
       </button>
     </ion-item>
   </ion-list>
 </ion-content>
+

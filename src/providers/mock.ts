@@ -10,6 +10,7 @@ export class MockProvider {
   /*
      戻り値：[{"name":"string", "items":[string[]]}]
   */
+
   getSegmentItems(){
     let segments = [];
     for(let i = 0; i <2;i++){
