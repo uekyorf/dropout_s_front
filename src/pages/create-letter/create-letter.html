@@ -5,14 +5,57 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>createLetter</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>かきおき 作成</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
+  <form padding (submit)="submitButton()" #f=ngForm>
+    <ion-item>
+      <ion-label>タイトル</ion-label>
+      <ion-input type="text" placeholder="タイトルをいれてね" [(ngModel)]="message.title" name="title"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label>本文</ion-label>
+      <ion-textarea type="text" placeholder="メッセージをいれてね" [(ngModel)]="message.body" name="body" rows="5">
+      </ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>有効期限</ion-label>
+      <ion-datetime display-format="YYYY/MMM/DD, HH:mm" picker-format="YYYY-MMM-DD-HH-mm" [(ngModel)]="message.due"
+        name="due"> </ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>部屋</ion-label>
+      <ion-input type="text" placeholder="部屋名" [(ngModel)]="message.ble_uuid" name="ble_uuid"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-checkbox [(ngModel)]="message.to_all_users" name="to_all_users"></ion-checkbox>
+      <ion-label>全ユーザへ送信</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>送信先</ion-label>
+      <ion-select [(ngModel)]="message.to_user" multiple="true" name="to_user">
+        <ion-option *ngFor="let user of users" [value]="user.name">{{user.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <p *ngIf="errorMessage && errorMessage.length> 0">{{errorMessage}}</p>
+    <button ion-button full round type="submit" [disabled]="!f.form.valid">とうこう！</button>
+  </form>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>dropout_s</ion-title>
+  </ion-toolbar>
+</ion-footer>

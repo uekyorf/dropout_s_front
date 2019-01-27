@@ -23,7 +23,7 @@ export class ApiProvider {
   }
 
   constructor(public http: HttpClient) {
-    
+
   }
 
   // BLEを全取得
@@ -38,8 +38,31 @@ export class ApiProvider {
   getMessage(): Observable<any> {
     return this.http.get('/api/message/get');
   }
-  serchUserName(name) :Observable<any> {
+  serchUserName(name): Observable<any> {
     console.log(name)
     return this.http.get<any>(`/api/user/get?search_word=${name}&`, this.httpOptions);
   }
+
+  postSighup(name, uuid): Observable<any> {
+    let postData = {
+      "user_name": name,
+      "device_name": uuid
+    }
+    return this.http.post<any>('/api/user/signup', postData, this.httpOptions)
+  }
+
+  PostCleateLetter(message): Observable<any> {
+    let postData = {
+      "device_name": localStorage.getItem('device_uuid'),
+      "title": message.title,
+      "body": message.body,
+      "due": message.due,
+      "ble_uuid": message.ble_uuid,
+      "to_user": message.to_user,
+      "to_all_users": message.to_all_users
+    }
+    console.log(postData)
+    return this.http.post<any>('/api/message/post', postData, this.httpOptions)
+  }
+
 }
