@@ -17,23 +17,26 @@ import {ListinfoPage} from "../listinfo/listinfo";
 })
 export class UserSearchPage {
   @Input() text:string;
-  users: Array<{search_word: string}>;
+  inputSearch:string = '';
+  getMes: string[] = [];
+  errMes : string ='';
   @ViewChild(Slides) slides: Slides;
   constructor(public navCtrl: NavController, public navParams: NavParams,public api: ApiProvider) {
-    api.getUser()
-      .subscribe(
-        data => {
-          this.users = data['result'];
-        },
-        err => console.log(err),
-        () => {}
-      );
   }
 
-  bleTapped(event, user) {
-    this.navCtrl.push(ListinfoPage, {
-      user: user
-    })
+  userSearch(){
+    this.api.serchUserName(this.inputSearch)
+      .subscribe(
+        data => {
+      if (data.code === 200) {
+         this.getMes=data.result
+      }
+    else if(data.code === 404) {
+      this.errMes = "リクエストなし";
+    }
+  }, err => console.log(err),
+() => {}
+      )
   }
 
 }

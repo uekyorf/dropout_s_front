@@ -5,17 +5,17 @@
   Ionic pages and navigation.
 -->
 
-  <form>
+  <form (submit)="userSearch()" #f=ngForm>
     <ion-item>
       <ion-label>
         <ion-icon name="search"></ion-icon>
       </ion-label>
-      <ion-input placeholder="ユーザ検索" type=""></ion-input>
+      <ion-input placeholder="ユーザ検索" [(ngModel)]="inputSearch" type="text" name="search_word"></ion-input>
     </ion-item>
     <ion-grid>
       <ion-row>
         <ion-col>
-          <button expand="block" type="submit" ion-button>けんさく！</button>
+          <button ion-button type="submit" [disabled]="!f.form.valid">けんさく！</button>
         </ion-col>
         <ion-col>
           <button expand="block" type="submit" ion-button>とうろく！</button>
@@ -24,8 +24,10 @@
     </ion-grid>
   </form>
 <ion-list >
-  <ion-item *ngFor="let i of users">{{i}}</ion-item>
+  <ion-item *ngFor="let i of getMes">
+    <button >
+    {{i}}
+    </button>
+  </ion-item>
 </ion-list>
-
-
 

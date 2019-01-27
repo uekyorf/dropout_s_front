@@ -38,7 +38,8 @@ export class ApiProvider {
   getMessage(): Observable<any> {
     return this.http.get('/api/message/get');
   }
-  getUser(): Observable<any> {
-    return this.http.get('https://kakioku-api-server.herokuapp.com//api/user/get?search_word=user&');
+  serchUserName(name) :Observable<any> {
+    console.log(name)
+    return this.http.get<any>(`/api/user/get?search_word=${name}&`, this.httpOptions);
   }
 }
